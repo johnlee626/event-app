@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './smarkets-logo.svg';
 import './App.css';
+import { Route } from 'react-router-dom';
+import EventList from './containers/EventList';
+import EventDetail from './containers/EventDetail';
 
 class App extends Component {
   render() {
@@ -8,11 +11,12 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          {this.props.title}
         </p>
+        <Route exact path="/" component={EventList} />
+        <Route path="/event/:id" component={EventDetail} />
       </div>
     );
   }
